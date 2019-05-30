@@ -60,7 +60,8 @@ const eventsDashboard = [
 class EventDashboard extends Component {
   state = {
     events: eventsDashboard,
-    isOpen: false
+    isOpen: false,
+    selectedEvent: null
   };
 
    handleFormOpen = () => {
@@ -74,6 +75,13 @@ class EventDashboard extends Component {
       isOpen: false
     })
   };
+
+  handleEditEvent = (eventToUpdate) => () => {
+     this.setState({
+       selectedEvent: eventToUpdate,
+       isOpen: true
+     })
+  }
 
   handleCreateEvent = (newEvent) => {
     newEvent.id = cuid();
